@@ -1,6 +1,5 @@
-
-
 function makeHint(e) {
+  totalHintsUsed++;
   var t = getParent(e);
   var hintBox = t.parent.querySelector('.hint-box');
   var timeX = 0;
@@ -22,6 +21,7 @@ function makeHint(e) {
     };
 
     function createBox(bn, index) {
+      if(bn === 0) return;
       if(index > 0) {
         timeX = init = bn-1;
         timeIndex = index;
@@ -37,7 +37,7 @@ function makeHint(e) {
 
     for(var n=0, max=t.nums.length; n<max; n++) {
       var toInt = parseInt(t.nums[n].textContent);
-      if(/minus/.test(mathType) && n!==0) {
+      if(/minus/.test(mathType) && n!==0 && toInt) {
         timeX = toInt - 1;
         var box = hintBox.getElementsByTagName('span');
         var createOutline = function() {
