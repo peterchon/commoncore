@@ -12,13 +12,13 @@ var totalHintPerSession = [];
 var runTimer = function (e) {
   var t = e.target || e.srcElement;
   if(totalTime > 1) {
-    t.innerHTML = 'Start time <i class="fa fa-clock-o"></i>';  
+    t.innerHTML = 'Start Timer';
     clearInterval(timer);
     var humanTime = totalTime > 59 ? parseInt(totalTime / 60) + " minute " + totalTime%60 : totalTime;
     timerArea.innerHTML = 'Wow! You finished it in ' + humanTime + ' seconds!';
     totalTime = 1;
   } else {
-    t.innerHTML = "Stop time";
+    t.innerHTML = 'Stop Timer';
     timer = setInterval(function(){
       var humanTime = totalTime > 59 ? parseInt(totalTime / 60) + " minute " + totalTime%60 : totalTime;
       timerArea.innerHTML = humanTime + " seconds";
@@ -108,7 +108,7 @@ var makeWorkbook = function () {
 
 
   clearInterval(timer);
-  timerBtn.innerHTML = 'Start time <i class="fa fa-clock-o"></i>';
+  timerBtn.innerHTML = 'Start Timer';
   timerArea.innerHTML = "";
   totalTime = 1;
 
