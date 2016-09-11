@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Common Core</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="workbook-controller">
+    <div class="math-type">
+      <label><input type="radio" name="type" value="plus" checked="true" /> Addition</label>
+      <label><input type="radio" name="type" value="minus" /> Subtraction</label>
+    </div>
+    <div class="workbook-type">
+      <!--label><input type="text" id="digit" placeholder="how big a number?" /></label-->
+      <!--label><input type="text" id="sum" placeholder="how many numbers?" /></label-->
+      <label>Create <input type="text" id="problems" value="10" /> Problems</label>
+      <button id="createWorksheet">Create Worksheet</button>
+      <button id="runTimer">Start Timer</button>
+    </div>
+  </div>
+
+  <div id="workbook" class="workbook-area"></div>
+
+  <script src="script.js"></script>
+  <script src="hint.js"></script>
+</body>
+</html>
