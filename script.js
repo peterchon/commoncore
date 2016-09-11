@@ -67,7 +67,7 @@ var makeProblems = function (r, n) {
   problem.className = "problem answer" + n + " " + mathType;
   var ran = getRanNum(r * 10);
   var input = document.createElement('input');
-  input.type = "text";
+  input.type = "number";
   input.onkeyup = checkAnswer;
 
   var hint = document.createElement('a');
