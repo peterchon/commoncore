@@ -2,21 +2,26 @@
 var createBtn = document.getElementById("createWorksheet");
 var timerBtn = document.getElementById("runTimer");
 var container = document.getElementById('workbook');
+var timerArea = document.getElementById('timerArea');
 var timer;
 var totalTime = 1;
 var mathType;
+var totalHintsUsed = 0;
+var totalHintPerSession = [];
 
 var runTimer = function (e) {
   var t = e.target || e.srcElement;
   if(totalTime > 1) {
-    t.innerHTML = "Start time";
+    t.innerHTML = 'Start time <i class="fa fa-clock-o"></i>';  
     clearInterval(timer);
     var humanTime = totalTime > 59 ? parseInt(totalTime / 60) + " minute " + totalTime%60 : totalTime;
-    console.log('wow! you finished it in ' + humanTime + ' seconds!');
+    timerArea.innerHTML = 'Wow! You finished it in ' + humanTime + ' seconds!';
     totalTime = 1;
   } else {
     t.innerHTML = "Stop time";
     timer = setInterval(function(){
+      var humanTime = totalTime > 59 ? parseInt(totalTime / 60) + " minute " + totalTime%60 : totalTime;
+      timerArea.innerHTML = humanTime + " seconds";
       totalTime++;
     }, 1000);
   }
@@ -98,11 +103,15 @@ var makeProblems = function (r, n) {
 
 var makeWorkbook = function () {
 
-  if(totalTime > 1) {
-    clearInterval(timer);
-    timerBtn.innerHTML = "Start time";
-    totalTime = 1;
-  }
+  totalHintPerSession.push(totalHintsUsed);
+  totalHintsUsed = 0
+
+
+  clearInterval(timer);
+  timerBtn.innerHTML = 'Start time <i class="fa fa-clock-o"></i>';
+  timerArea.innerHTML = "";
+  totalTime = 1;
+
 
   container.innerHTML = "";
   var type = document.getElementsByName('type');
