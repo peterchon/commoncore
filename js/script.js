@@ -1,5 +1,5 @@
 'use strict';
-var createBtn = document.getElementById("createWorksheet");
+var createBtn = document.getElementById("createNew");
 var timerBtn = document.getElementById("runTimer");
 var container = document.getElementById('workbook');
 var timerArea = document.getElementById('timerArea');
@@ -80,7 +80,7 @@ var makeProblems = function (r, n) {
 
   var hint = document.createElement('a');
   hint.className = "hint";
-  hint.innerHTML = "show hint";
+  hint.innerHTML = "Help";
   hint.onclick = makeHint;
 
   if(/minus/.test(mathType)) {

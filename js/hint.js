@@ -8,7 +8,7 @@ function makeHint(e) {
   var timeIndex;
 
   if(!hintBox) {
-    t.tar.innerHTML = "hide hint";
+    t.tar.innerHTML = "Ok, got it.";
     hintBox = document.createElement('div');
     hintBox.className = "hint-box cf";
 
@@ -49,12 +49,6 @@ function makeHint(e) {
           }
         };
         setTimeout(createOutline, 1000);
-        /*
-        while(toInt) {
-          box[box.length - toInt].className += " outline";
-          toInt--;
-        }
-        */
       } else {
         createBox(toInt, n);
       }
@@ -62,7 +56,7 @@ function makeHint(e) {
 
     t.parent.appendChild(hintBox);
   } else {
-    t.tar.innerHTML = "show hint";
+    t.tar.innerHTML = "Help";
     t.parent.removeChild(hintBox);
   }
 }
