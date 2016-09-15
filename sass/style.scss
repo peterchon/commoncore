@@ -1,5 +1,6 @@
 @import 'https://fonts.googleapis.com/css?family=Roboto';
 @import "mixin";
+@import "helpers";
 
 html, body {
   margin: 0;
@@ -8,16 +9,6 @@ html, body {
   background-color: #f9f9f9;
 }
 
-.cf {
-  &.cf:before,
-  &.cf:after {
-    content: "";
-    display: table;
-  }
-  &:after {
-    clear:both;
-  }
-}
 
 a {
   color: #09f;
@@ -31,13 +22,37 @@ a {
   }
 }
 
+select {
+  width: 100%;
+}
+
+.block-input {
+  padding: 5px;
+  background-color: white;
+  border: 1px solid #ccc;
+  @include border-radius(3px);
+  input {
+    font-size: 18px;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    background: none;
+  }
+}
+
 button {
+  color: #3f3f3f;
   outline: none;
   background-color: white;
   border: 1px solid #ccc;
   cursor: pointer;
+  margin-top: 15px;
   @include border-radius(3px);
   @include transition(background-color, 300ms);
+  &.block {
+    display: block;
+  }
   &:hover {
     background-color: #f0f0f0;
   }

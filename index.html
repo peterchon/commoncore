@@ -11,20 +11,31 @@
 <body>
 
 <div class="workbook-controller">
-  <div class="math-type">
-    <label><input type="radio" name="type" value="plus" checked="true" /> Addition</label>
-    <label><input type="radio" name="type" value="minus" /> Subtraction</label>
-  </div>
-  <div class="workbook-type cf">
-    <!--label><input type="text" id="digit" placeholder="how big a number?" /></label-->
-    <!--label><input type="text" id="sum" placeholder="how many numbers?" /></label-->
-    <label><input type="number" id="problems" value="10" /> Problems</label>
-    <button id="createWorksheet">New <i class="fa fa-plus"></i></button>
-    <button id="runTimer">Start Timer</button>
+  <div class="container">
 
-    <span id="timerArea"></span>
+    <div class="math-type">
+      <p>What kind of Math should we practice?</p>
+      <label><input type="checkbox" name="type" value="plus" checked="true" /> Addition</label>
+      <label><input type="checkbox" name="type" value="minus" /> Subtraction</label>
+      <label><input type="checkbox" name="type" value="multiply" /> Multiplication</label>
+      <label><input type="checkbox" name="type" value="divide" /> Division</label>
+    </div>
+
+    <div class="problem-count">
+      <p>How many problems should we practice?</p>
+      <div class="block-input">
+        <input type="number" id="problems" value="10" />
+      </div>
+    </div>
+
+    <div class="create-workbook">
+      <button id="createNew" class="display-block width-full">New <i class="fa fa-plus"></i></button>
+      <button id="runTimer" class="display-block width-full timer">Start Timer</button>
+
+      <div id="timerArea" class="show-timer"></div>
+    </div>
+    <p class="copyright"><small>&copy;2016 | <a href="https://linkedin.com/in/peterchon" target="_blank">Peter Chon</a></small></p>
   </div>
-  <p class="copyright"><small>&copy;2016 | <a href="https://linkedin.com/in/peterchon" target="_blank">Peter Chon</a></small></p>
 </div>
 
 <div id="workbook" class="workbook-area">
