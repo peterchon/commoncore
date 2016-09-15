@@ -17,14 +17,15 @@
       <p>What kind of Math should we practice?</p>
       <label><input type="checkbox" name="type" value="plus" checked="true" /> Addition</label>
       <label><input type="checkbox" name="type" value="minus" /> Subtraction</label>
-      <label><input type="checkbox" name="type" value="multiply" /> Multiplication</label>
+      <!--label><input type="checkbox" name="type" value="multiply" /> Multiplication</label>
       <label><input type="checkbox" name="type" value="divide" /> Division</label>
+      <label><input type="checkbox" name="type" value="word" /> Word</label-->
     </div>
 
     <div class="problem-count">
       <p>How many problems should we practice?</p>
       <div class="block-input">
-        <input type="number" id="problems" value="10" />
+        <input type="number" id="problems" value="10" min="10" max="100"/>
       </div>
     </div>
 
@@ -38,8 +39,13 @@
   </div>
 </div>
 
-<div id="workbook" class="workbook-area">
-  <p>Click on &ldquo;New <i class="fa fa-plus"></i>&rdquo; to begin.</p>
+<div class="workbook-area">
+  <div id="options" class="problem-options">
+    <p><label>Limit the highest number to: <input type="number" id="max" value="10" /></label></p>
+  </div>
+  <div id="workbook" >
+    <p>Click on <span class="create-new">New <i class="fa fa-plus"></i></span> to begin.</p>
+  </div>
 </div>
 
 <script src="js/script.js" async></script>

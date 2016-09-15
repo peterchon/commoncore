@@ -17,6 +17,22 @@
   p {
     margin: 25px;
     text-align: center;
+    .create-new {
+      padding: 5px 10px;
+      margin: 0 5px;
+      background-color: #09f;
+      color: white;
+      display: inline-block;
+      @include border-radius(3px);
+    }
+  }
+}
+
+.problem-options {
+  p {
+    margin: 0;
+    padding: 10px 15px;
+    text-align: left;
   }
 }
 

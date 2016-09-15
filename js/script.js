@@ -32,48 +32,42 @@ var runTimer = function (e) {
 
 var getRanNum = function(max) {
   return function(more) {
-    return parseInt(Math.random() * max) + more;
+    return parseInt(Math.random() * (max - more) + more);
   }
 };
 
 function getParent(e) {
-  var tar = e.target || e.srcElement;
-  var parent = tar.parentNode;
-  var nums = parent.querySelectorAll('.num');
+  var t = e.target || e.srcElement;
+  var p = t.parentNode;
+  var n = p.querySelectorAll('.num');
 
   return {
-    tar: tar,
-    parent: parent,
-    nums: nums
+    tar: t,
+    parent: p,
+    nums: n
   };
 }
 
 var checkAnswer = function(e) {
   var t = getParent(e);
   var answer = 0;
-  var answerClass = "";
   for(var i=0; i<t.nums.length; i++) {
     var val = parseInt(t.nums[i].innerHTML);
-    if(/plus/.test(mathType) || i===0) {
-      answer += val;
-    } else {
-      answer -= val;
-    }
+    answer = /plus/.test(mathType) || i===0 ? answer + val : answer - val;
   }
-  if(!!t.tar.value) {
-    if(answer === parseInt(t.tar.value)) {
-      answerClass = "correct";
-    } else {
-      answerClass = "incorrect";
-    }
+
+  if (!!t.tar.value && answer === parseInt(t.tar.value)) {
+    t.tar.className = answer === parseInt(t.tar.value) ? "correct" : "incorrect";
   }
-  t.tar.className = answerClass;
+
 };
 
 var makeProblems = function (r, n) {
   var problem = document.createElement('div');
+  var max = document.getElementById('max').value;
+  max = max ? max : 10;
   problem.className = "problem answer" + n + " " + mathType;
-  var ran = getRanNum(r * 10);
+  var ran = getRanNum(r * max);
   var input = document.createElement('input');
   input.type = "number";
   input.onkeyup = checkAnswer;
@@ -88,7 +82,9 @@ var makeProblems = function (r, n) {
     for(var i=0; i<n; i++) {
       arr.push(ran(0));
     }
-    arr.sort();
+    arr.sort(function(a, b) {
+      return a - b;
+    });
   }
 
   while(n){
@@ -107,14 +103,12 @@ var makeProblems = function (r, n) {
 var makeWorkbook = function () {
 
   totalHintPerSession.push(totalHintsUsed);
-  totalHintsUsed = 0
-
+  totalHintsUsed = 0;
 
   clearInterval(timer);
   timerBtn.innerHTML = 'Start Timer';
   timerArea.innerHTML = "";
   totalTime = 1;
-
 
   container.innerHTML = "";
   var type = document.getElementsByName('type');
@@ -129,7 +123,12 @@ var makeWorkbook = function () {
   var sumCount = document.getElementById('sum') ? document.getElementById('sum').value : 2;
   var problemCount = document.getElementById('problems').value;
 
-  for(var i=0; i<problemCount; i++) {
+  if(problemCount > 999) {
+    container.innerHTML = "<p>I like your enthusiasm, but I think " + problemCount + " might be too many.</p>";
+    return;
+  }
+
+  for(var j=0; j<problemCount; j++) {
     makeProblems(digitCount, sumCount);
   }
 };

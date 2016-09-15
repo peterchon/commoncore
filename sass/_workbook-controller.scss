@@ -31,6 +31,9 @@
       &:hover {
         background-color: rgba(#09f, 0.8);
       }
+      &:active {
+        background-color: rgba(#09f, 0.5);
+      }
     }
     @media screen and (orientation: portrait) and (max-width: 768px) {
       width: auto;
