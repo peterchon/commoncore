@@ -11,17 +11,20 @@ var totalHintPerSession = [];
 
 var runTimer = function (e) {
   var t = e.target || e.srcElement;
+
+  function readableTime(tt) {
+    return tt > 59 ? parseInt(tt / 60) + " minute " + tt%60 : tt;
+  }
+
   if(totalTime > 1) {
     t.innerHTML = 'Start Timer';
     clearInterval(timer);
-    var humanTime = totalTime > 59 ? parseInt(totalTime / 60) + " minute " + totalTime%60 : totalTime;
-    timerArea.innerHTML = 'Wow! You finished it in ' + humanTime + ' seconds!';
+    timerArea.innerHTML = 'Wow! You finished it in ' + readableTime(totalTime) + ' seconds!';
     totalTime = 1;
   } else {
     t.innerHTML = 'Stop Timer';
     timer = setInterval(function(){
-      var humanTime = totalTime > 59 ? parseInt(totalTime / 60) + " minute " + totalTime%60 : totalTime;
-      timerArea.innerHTML = humanTime + " seconds";
+      timerArea.innerHTML = readableTime(totalTime) + " seconds";
       totalTime++;
     }, 1000);
   }

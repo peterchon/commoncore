@@ -1,0 +1,54 @@
+.workbook-controller {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 70%;
+  padding: 25px;
+  @media screen and (orientation: portrait) and (max-width: 768px) {
+    right: 0;
+    height: 50px;
+    padding: 10px 25px;
+  }
+  label,
+  button,
+  .math-type,
+  .workbook-type,
+  #timerArea {
+    display: block;
+    margin-bottom: 15px;
+    @media screen and (orientation: portrait) and (max-width: 768px) {
+      display: inline-block;
+      margin-bottom: 0;
+    }
+  }
+  button {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 1.2em;
+    @media screen and (orientation: portrait) and (max-width: 768px) {
+      width: auto;
+      padding: 5px;
+    }
+  }
+  input[type="number"] {
+    width: 50px;
+    padding: 5px;
+    margin-right: 5px;
+  }
+  input[type="radio"] {
+    position: relative;
+    top: -1px;
+    margin: 0 2px 0 0;
+  }
+}
+
+#timerArea {
+  display:block;
+  text-align: center;
+}
+
+.copyright {
+  text-align:center;
+  color:#999;
+}

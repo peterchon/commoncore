@@ -5,34 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>Common Core</title>
 
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-  <link href="css/style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-  <div class="workbook-controller">
-    <div class="math-type">
-      <label><input type="radio" name="type" value="plus" checked="true" /> Addition <i class="fa fa-plus-circle"></i></label>
-      <label><input type="radio" name="type" value="minus" /> Subtraction <i class="fa fa-minus-circle"></i></label>
-    </div>
-    <div class="workbook-type cf">
-      <!--label><input type="text" id="digit" placeholder="how big a number?" /></label-->
-      <!--label><input type="text" id="sum" placeholder="how many numbers?" /></label-->
-      <label>Show <input type="number" id="problems" value="10" /> Problems</label>
-      <button id="createWorksheet">New <i class="fa fa-plus"></i></button>
-      <button id="runTimer">Start Timer</button>
-
-      <span id="timerArea"></span>
-    </div>
+<div class="workbook-controller">
+  <div class="math-type">
+    <label><input type="radio" name="type" value="plus" checked="true" /> Addition</label>
+    <label><input type="radio" name="type" value="minus" /> Subtraction</label>
   </div>
+  <div class="workbook-type cf">
+    <!--label><input type="text" id="digit" placeholder="how big a number?" /></label-->
+    <!--label><input type="text" id="sum" placeholder="how many numbers?" /></label-->
+    <label><input type="number" id="problems" value="10" /> Problems</label>
+    <button id="createWorksheet">New <i class="fa fa-plus"></i></button>
+    <button id="runTimer">Start Timer</button>
 
-  <div id="workbook" class="workbook-area">
-    <p>Click on <i class="fa fa-plus"></i> to begin.</p>
+    <span id="timerArea"></span>
   </div>
-
   <p class="copyright"><small>&copy;2016 | <a href="https://linkedin.com/in/peterchon" target="_blank">Peter Chon</a></small></p>
+</div>
 
-  <script src="js/script.js" async></script>
-  <script src="js/hint.js" async></script>
+<div id="workbook" class="workbook-area">
+  <p>Click on &ldquo;New <i class="fa fa-plus"></i>&rdquo; to begin.</p>
+</div>
+
+<script src="js/script.js" async></script>
+<script src="js/hint.js" async></script>
 </body>
 </html>
