@@ -32,7 +32,19 @@
   p {
     margin: 0;
     padding: 10px 15px;
-    text-align: left;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+  }
+  label {
+    margin-left: 15px;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+  .input {
+    input {
+      max-width: 50px;
+    }
   }
 }
 
@@ -76,13 +88,20 @@
   &.plus,
   &.minus {
     .num {
-      &:after {
+      &:not(.total):after {
         content: "+";
         display: inline-block;
         margin-left: 10px;
       }
       &.last:after {
         content: "=";
+      }
+    }
+    .total {
+      &:before {
+        content: "=";
+        display: inline-block;
+        margin-right: 10px;
       }
     }
   }

@@ -3,11 +3,23 @@ var createBtn = document.getElementById("createNew");
 var timerBtn = document.getElementById("runTimer");
 var container = document.getElementById('workbook');
 var timerArea = document.getElementById('timerArea');
+var mathTypeContainer = document.querySelector('.math-type');
 var timer;
 var totalTime = 1;
 var mathType;
 var totalHintsUsed = 0;
 var totalHintPerSession = [];
+var maximumNumber, totalNumber, algebra;
+
+mathTypeContainer.onclick = function(Event) {
+  var el = Event.target || Event.srcElement;
+  var totalParent = document.getElementById('total').parentNode.parentNode;
+  if(/minus/.test(el.value) && el.checked) {
+    totalParent.style.display = "none";
+  } else {
+    totalParent.style.display = "inline-block";
+  }
+};
 
 var runTimer = function (e) {
   var t = e.target || e.srcElement;
@@ -63,9 +75,13 @@ var checkAnswer = function(e) {
 };
 
 var makeProblems = function (r, n) {
+  var max = 10, tNum = 0, problemArr = [];
+
+  if(maximumNumber) max = document.getElementById('max').value;
+
+  if(totalNumber) tNum = document.getElementById('total').value;
+
   var problem = document.createElement('div');
-  var max = document.getElementById('max').value;
-  max = max ? max : 10;
   problem.className = "problem answer" + n + " " + mathType;
   var ran = getRanNum(r * max);
   var input = document.createElement('input');
@@ -91,16 +107,42 @@ var makeProblems = function (r, n) {
     var num = document.createElement('span');
     num.className = n > 1 ? "num" : "num last";
     num.innerHTML = /minus/.test(mathType) ? arr[n-1] : ran(0);
+    if(totalNumber && n === 1 && !/minus/.test(mathType)) {
+      num.innerHTML = tNum - parseInt(problemArr[0].textContent);
+    }
     problem.appendChild(num);
+    problemArr.push(num);
     n--;
   }
 
-  problem.appendChild(input);
+  if(algebra) {
+    problem.innerHTML = "";
+    var algebraTotal = 0;
+    for(var j=0, m=problemArr.length; j<m; j++) {
+      if(j === m - 1) {
+        problem.appendChild(input);
+        input.setAttribute('data-val', problemArr[j].textContent);
+      } else {
+        problem.appendChild(problemArr[j]);
+      }
+      algebraTotal += parseInt(problemArr[j].textContent);
+    }
+    problem.className += " algebra";
+    problem.innerHTML += '<span class="num total">' + algebraTotal + '</span>';
+  } else {
+    problem.appendChild(input);
+  }
+
   problem.appendChild(hint);
+
   container.appendChild(problem);
 };
 
 var makeWorkbook = function () {
+
+  maximumNumber = document.getElementById('maxNum').checked;
+  totalNumber = document.getElementById('totalNum').checked;
+  algebra = document.getElementById('algebra').checked;
 
   totalHintPerSession.push(totalHintsUsed);
   totalHintsUsed = 0;

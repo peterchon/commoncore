@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>Common Core</title>
+  <title>We Math Math</title>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
   <link rel="stylesheet" href="css/style.css" />
@@ -41,7 +41,11 @@
 
 <div class="workbook-area">
   <div id="options" class="problem-options">
-    <p><label>Limit the highest number to: <input type="number" id="max" value="10" /></label></p>
+    <p>
+        <label><input type="checkbox" id="maxNum" checked /> Highest: <span class="input"><input type="number" id="max" value="10" /></span></label>
+        <label><input type="checkbox" id="totalNum" /> Total: <span class="input"><input type="number" id="total" value="20" /></span></label>
+        <label><input type="checkbox" id="algebra" /> Algebraic</label>
+    </p>
   </div>
   <div id="workbook" >
     <p>Click on <span class="create-new">New <i class="fa fa-plus"></i></span> to begin.</p>

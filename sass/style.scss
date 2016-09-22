@@ -41,6 +41,15 @@ select {
   }
 }
 
+.input {
+  @extend .block-input;
+  display: inline-block;
+  input {
+    font-size: 14px;
+    width: auto;
+  }
+}
+
 button {
   color: #3f3f3f;
   outline: none;
