@@ -80,6 +80,8 @@ checkBtn.onclick = function() {
 generateRandomBtn.onclick = function() {
 
     total.value = "";
+    section.innerHTML = "";
+    makeTable();
 
     function ran(min, max) {
         min = Math.ceil(min);
